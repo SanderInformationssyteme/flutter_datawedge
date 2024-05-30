@@ -149,13 +149,16 @@ class FlutterDataWedge {
   /// Returns when the Command is executed NOT when DataWedge is ready to be operated again
   /// For that use [onScannerEvent] to listen for the Result of the Command
   Future<void> createDefaultProfile(
-      {required String profileName, String? commandIdentifier}) async {
+      {required String profileName,
+      String? commandIdentifier,
+      bool? resetProfile}) async {
     final identifier = commandIdentifier ?? Uuid().v4();
     _methodChannel.invokeMethod<void>(
       MethodChannelMethods.createDataWedgeProfile.value,
       jsonEncode({
         "name": profileName,
         'commandIdentifier': identifier,
+        'resetProfile': resetProfile ?? true,
       }),
     );
   }
