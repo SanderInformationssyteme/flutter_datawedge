@@ -73,7 +73,8 @@ class FlutterDatawedgePlugin : FlutterPlugin, MethodCallHandler, StreamHandler {
                 val arguments = JSONObject(call.arguments.toString())
                 val name: String = arguments.get("name") as String
                 val commandIdentifier: String = arguments.get("commandIdentifier") as String
-                createDataWedgeProfile(name, commandIdentifier)
+                val resetProfile: Boolean = arguments.get("resetProfile") as Boolean
+                createDataWedgeProfile(name, commandIdentifier, resetProfile)
                 result.success(null)  //  DataWedge does not return responses
             }
 
@@ -124,7 +125,7 @@ class FlutterDatawedgePlugin : FlutterPlugin, MethodCallHandler, StreamHandler {
 
     }
 
-    private fun createDataWedgeProfile(profileName: String, commandIdentifier: String) {
+    private fun createDataWedgeProfile(profileName: String, commandIdentifier: String, resetProfile: Boolean = true) {
         //https://techdocs.zebra.com/datawedge/latest/guide/api/createprofile/
         dwInterface.sendCommandString(
             context,
@@ -141,7 +142,7 @@ class FlutterDatawedgePlugin : FlutterPlugin, MethodCallHandler, StreamHandler {
         val barcodeConfig = Bundle()
         barcodeConfig.putString("PLUGIN_NAME", "BARCODE")
         //  This is the default but never hurts to specify
-        barcodeConfig.putString("RESET_CONFIG", "true")
+        barcodeConfig.putString("RESET_CONFIG", resetProfile.toString().lowercase())
 
         val barcodeProps = Bundle()
         barcodeConfig.putBundle("PARAM_LIST", barcodeProps)
