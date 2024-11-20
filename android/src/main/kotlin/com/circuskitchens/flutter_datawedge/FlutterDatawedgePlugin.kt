@@ -62,6 +62,7 @@ class FlutterDatawedgePlugin : FlutterPlugin, MethodCallHandler, StreamHandler {
         when (call.method) {
             MyMethods.sendDataWedgeCommandStringParameter -> {
                 val arguments = JSONObject(call.arguments.toString())
+                //ein kommentar
                 val command: String = arguments.get("command") as String
                 val parameter: String = arguments.get("parameter") as String
                 val commandIdentifier: String = arguments.get("commandIdentifier") as String
