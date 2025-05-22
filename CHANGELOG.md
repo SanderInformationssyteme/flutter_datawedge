@@ -1,3 +1,23 @@
+# 3.2.0
+
+- Update to freezed 3
+- Require Dart 3.7 and Flutter 3.29
+
+# 3.1.0
+
+- Update gradle
+- (This contains all changes of previous dev builds)
+
+# 3.1.0-dev.3
+
+- Update freezed, json_serializable, kotlin and gradle
+
+# 3.1.0-dev.2
+
+- Add compatibly with Android 14. Contributed by [AhmadHusein5853](https://github.com/AhmadHusein5853)
+- Update gradle, lints and kotlin
+- Filter out unsupported events and add logs
+
 # 3.1.0-dev.1
 
 - Added a `updateProfile` function to update the configuration of a profile. Contribution by [Bobekos](https://github.com/bobekos)

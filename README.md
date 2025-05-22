@@ -4,7 +4,9 @@
 
 A Flutter package to communicate with Zebra DataWedge scanners.
 
-## Getting Started (under development)
+Internally, this package uses the [DataWedge APIs](https://techdocs.zebra.com/datawedge/latest/guide/api/overview/) and therefore is only compatible with Android.
+
+## Getting Started
 
 #### Example
 
@@ -23,10 +25,7 @@ Initialize the FlutterDataWedge Object and attach a listener to the onScanResult
     
     // Stop listening for new scans.
     onScanSubscription.cancel();
-    dw.dispose();
 ```
-
-`dispose()` will close all Streams.
 
 *Also checkout the example application.*
 
@@ -35,6 +34,8 @@ Unlike previous versions, this version of the package won't create a profile and
 Instead a profile can be created using the `createDefaultProfile` method.
 To query all available profiles use `requestProfiles`, to query the active profile use `requestActiveProfile`.
 The functions `waitForProfiles` and `waitForActiveProfile` can be used to wait results after the requesting function has been called.
+
+Further, see the official [documentation](https://techdocs.zebra.com/datawedge/13-0/guide/api/setconfig/) to create, update or replace a DataWedge profiles.
 
 #### async/await
 
